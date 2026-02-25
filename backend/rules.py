@@ -54,4 +54,44 @@ def run_rules(transaction: dict, all_transactions: pd.DataFrame) -> dict:
         explanations.append("Donor is unknown. Anonymous donations are prohibited")
 
     #3. ILLEGAL_SOURCE
-    if transaction.get("is")
+    if transaction.get("is_illegal_source",False):
+        reasons.append("ILLEGAL_SOURCE")
+        explanations.append("Contribution is from an illegal source")
+
+    #4. PUBLIC_RESOURCE
+    if transaction.get("is_public_resource",False):
+        reasons.append("PUBLIC_RESOURCE")
+        explanations.append("Suspected use of public resources")
+
+    #5. FREQ_HIGH - contributions by same donor to same candidate within window
+    if donor_id and not all_transactions.empty:
+        window_start = tx_time - timedelta(hours = SUSPICIOUS_FREQ_WINDOW)
+        recent = all_transactions[
+            (all_transactions["donor_id"] == donor_id) &
+            (all_transactions["candidate_id"] == candiadate_id) &
+            (pd.to_datetime(all_transactions["timestamp"], errors="coerce") >= window_start)
+        ]
+
+        if len (recent) >= SUSPICIOUS_FREQ_COUNT:
+            reasons.append("FREQ_HIGH")
+            explanations.append(
+                f"Donor has made {len(recent)} donations to this candidate in the last"
+                f"{SUSPICIOUS_FREQ_WINDOW} hours (threshold: {SUSPICIOUS_FREQ_COUNT})."
+            )
+    
+    #6. MULTI_CANDIDATE_DONOR - contributions by same donor to different candidates within window
+    if donor_id and not all_transactions.empty:
+        window_start = tx_time - timedelta(hours = MULTI_CANDIDATE_WINDOW_HOURS)
+        recent_candidates = all_transactions[
+            (all_transactions["donor_id"] == donor_id) &
+            (pd.to_datetime(all_transactions["timestamp"], errors="coerce") >= window_start) &
+            (all_transactions["candidate_id"] == candiadate_id)
+        ]["candidate_id"].unique()
+        
+        if len(recent_candidates) >= 2:
+            reasons.append("MULTI_CANDIDATE_DONOR")
+            explanations.append(
+                f"Donor has contributed to {len(recent_candidates)}"
+                f"within{MULTI_CANDIDATE_WINDOW_HOURS} hours."
+            )
+
