@@ -49,7 +49,7 @@ def run_rules(transaction: dict, all_transactions: pd.DataFrame) -> dict:
         )
     
     #2. ANONYMOUS_DONATION
-    if transaction.get("is.anonymous", False):
+    if transaction.get("is_anonymous", False):
         reasons.append("ANONYMOUS_DONATION")
         explanations.append("Donor is unknown. Anonymous donations are prohibited")
 
