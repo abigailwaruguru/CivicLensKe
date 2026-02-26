@@ -1,0 +1,31 @@
+transaction_id,timestamp,donor_id,donor_display,donor_source_type,candidate_id,candidate_name,party,amount_kes,payment_method,is_anonymous,is_public_resource,is_illegal_source,harambee_venue,harambee_organiser,notes
+TXN-000001,2026-02-25T09:00:00,DONOR-1002,A*** K***,individual,CAND-02,Candidate B,Party Beta,35000,mobile_money,False,False,False,,,sample data
+TXN-000002,2026-02-25T09:15:00,DONOR-3001,HARAMBEE-Event-01,harambee,CAND-01,Candidate A,Party Alpha,5000,cash,False,False,False,Community Hall,Local Committee,sample data
+TXN-000003,2026-02-25T09:30:00,DONOR-1001,J*** M***,individual,CAND-03,Candidate C,Party Alpha,60000,bank_transfer,False,False,False,,,sample data
+TXN-000004,2026-02-25T09:45:00,DONOR-1001,J*** M***,individual,CAND-01,Candidate A,Party Alpha,35000,in_kind,False,False,False,,,sample data
+TXN-000005,2026-02-25T10:00:00,DONOR-1002,A*** K***,individual,CAND-01,Candidate A,Party Alpha,5000,in_kind,False,False,False,,,sample data
+TXN-000006,2026-02-25T10:15:00,DONOR-3001,HARAMBEE-Event-01,harambee,CAND-01,Candidate A,Party Alpha,150000,bank_transfer,False,False,False,Community Hall,Local Committee,sample data
+TXN-000007,2026-02-25T10:30:00,,ANONYMOUS,unknown,CAND-03,Candidate C,Party Alpha,60000,mobile_money,True,False,False,,,sample data
+TXN-000008,2026-02-25T10:45:00,DONOR-3001,HARAMBEE-Event-01,harambee,CAND-03,Candidate C,Party Alpha,35000,mobile_money,False,False,False,Community Hall,Local Committee,sample data
+TXN-000009,2026-02-25T11:00:00,DONOR-1001,J*** M***,individual,CAND-01,Candidate A,Party Alpha,60000,bank_transfer,False,True,False,,,sample data
+TXN-000010,2026-02-25T11:15:00,DONOR-2002,ORG-Kifaru Traders,organisation,CAND-02,Candidate B,Party Beta,12000,mobile_money,False,False,False,,,sample data
+TXN-000011,2026-02-25T11:30:00,DONOR-2001,ORG-Redwood Ltd,organisation,CAND-03,Candidate C,Party Alpha,60000,bank_transfer,False,False,False,,,sample data
+TXN-000012,2026-02-25T11:45:00,DONOR-3001,HARAMBEE-Event-01,harambee,CAND-01,Candidate A,Party Alpha,60000,bank_transfer,False,False,False,Community Hall,Local Committee,sample data
+TXN-000013,2026-02-25T12:00:00,DONOR-1001,J*** M***,individual,CAND-02,Candidate B,Party Beta,500000,mobile_money,False,False,False,,,sample data
+TXN-000014,2026-02-25T12:15:00,DONOR-1001,J*** M***,individual,CAND-03,Candidate C,Party Alpha,60000,bank_transfer,False,False,False,,,sample data
+TXN-000015,2026-02-25T12:30:00,,ANONYMOUS,unknown,CAND-02,Candidate B,Party Beta,60000,in_kind,True,False,False,,,sample data
+TXN-000016,2026-02-25T12:45:00,DONOR-2002,ORG-Kifaru Traders,organisation,CAND-02,Candidate B,Party Beta,60000,in_kind,False,False,False,,,sample data
+TXN-000017,2026-02-25T13:00:00,DONOR-2001,ORG-Redwood Ltd,organisation,CAND-02,Candidate B,Party Beta,12000,bank_transfer,False,False,False,,,sample data
+TXN-000018,2026-02-25T13:15:00,DONOR-1002,A*** K***,individual,CAND-03,Candidate C,Party Alpha,5000,cash,False,False,True,,,sample data
+TXN-000019,2026-02-25T13:30:00,DONOR-2002,ORG-Kifaru Traders,organisation,CAND-03,Candidate C,Party Alpha,20000,in_kind,False,False,False,,,sample data
+TXN-000020,2026-02-25T13:45:00,DONOR-3001,HARAMBEE-Event-01,harambee,CAND-02,Candidate B,Party Beta,5000,mobile_money,False,False,False,Community Hall,Local Committee,sample data
+TXN-000021,2026-02-25T14:00:00,DONOR-2002,ORG-Kifaru Traders,organisation,CAND-03,Candidate C,Party Alpha,12000,cash,False,False,False,,,sample data
+TXN-000022,2026-02-25T14:15:00,DONOR-2002,ORG-Kifaru Traders,organisation,CAND-01,Candidate A,Party Alpha,250000,mobile_money,False,False,False,,,sample data
+TXN-000023,2026-02-25T14:30:00,DONOR-1001,J*** M***,individual,CAND-03,Candidate C,Party Alpha,60000,cash,False,False,False,,,sample data
+TXN-000024,2026-02-25T14:45:00,,ANONYMOUS,unknown,CAND-02,Candidate B,Party Beta,20000,in_kind,True,False,False,,,sample data
+TXN-000025,2026-02-25T15:00:00,DONOR-2002,ORG-Kifaru Traders,organisation,CAND-03,Candidate C,Party Alpha,5000,mobile_money,False,False,False,,,sample data
+TXN-000026,2026-02-25T15:15:00,DONOR-2002,ORG-Kifaru Traders,organisation,CAND-02,Candidate B,Party Beta,90000,mobile_money,False,False,False,,,sample data
+TXN-000027,2026-02-25T15:30:00,,ANONYMOUS,unknown,CAND-01,Candidate A,Party Alpha,90000,cash,True,False,False,,,sample data
+TXN-000028,2026-02-25T15:45:00,DONOR-3001,HARAMBEE-Event-01,harambee,CAND-03,Candidate C,Party Alpha,90000,in_kind,False,False,False,Community Hall,Local Committee,sample data
+TXN-000029,2026-02-25T16:00:00,,ANONYMOUS,unknown,CAND-02,Candidate B,Party Beta,35000,cash,True,False,False,,,sample data
+TXN-000030,2026-02-25T16:15:00,DONOR-2002,ORG-Kifaru Traders,organisation,CAND-01,Candidate A,Party Alpha,20000,bank_transfer,False,False,False,,,sample data
