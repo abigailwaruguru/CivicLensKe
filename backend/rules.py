@@ -95,3 +95,63 @@ def run_rules(transaction: dict, all_transactions: pd.DataFrame) -> dict:
                 f"within{MULTI_CANDIDATE_WINDOW_HOURS} hours."
             )
 
+    #7. DISCLOSURE_REQUIRED
+    if amount >= RECEIPT_THRESHOLD_KES:
+        reasons.append("DISCLOSURE_REQUIRED")
+        explanations.append(
+            f"Donation of KES {amount: ,.0f} exceeds the disclosure threshold of {RECEIPT_THRESHOLD_KES: ,.0f}. Receipt required"
+        )
+
+    #Status - violation, suspicious, compliant
+    violation_codes = {"CAP_BREACH", "ILLEGAL_SOURCE", "PUBLIC_RESOURCE", "ANONYMOUS_DONATION"}
+    suspicious_codes = {"MULTI_CANDIDATE_DONOR", "FREQ_HIGH"}
+
+    has_violations = any(r in violation_codes for r in reasons)
+    has_suspicious = any(r in suspicious_codes for r in reasons)
+
+    if has_violations:
+        status = "Violation"
+    elif has_suspicious:
+        status = "Suspicious"
+    else:
+        status = "Compliant"
+    
+    explain = " ".join(explanations) if explanations else "Transaction meets all compliance requirements."
+
+    return {
+        "reasons": reasons,
+        "status": status,
+        "explain": explain
+    }
+
+#Define enforcemment actions
+def compute_enforcements(candidate_id: str, new_status: str, all_transactions: pd.DataFrame) -> str:
+    """
+    Computes enforcement action based on candidates history
+    Returns: NONE, ON_HOLD, LOCKED, BANNED
+    """
+    if new_status == "Suspicious":
+        #Checks frequency of suspicious flags in the last 24Hrs
+        window_start = datetime.utcnow() - timedelta(hours=SUSPICIOUS_FREQ_WINDOW)
+        if not all_transactions.empty:
+            recent_suspicious = all_transactions[
+                (all_transactions["candidate_id"] == candidate_id) &
+                (all_transactions["status"] == "Suspicious") &
+                (pd.to_datetime(all_transactions["timestamp"], errors="coerce") >= window_start)
+                ]
+            if len(recent_suspicious)>= SUSPICIOUS_FREQ_COUNT - 1:
+                return "ON_HOLD"
+            
+    if new_status == "Violation":
+        #Checks frequency of suspicious flags in the last 24Hrs
+        lock_window_start = datetime.utcnow() - timedelta(days=LOCK_WINDOW_DAYS)
+        if not all_transactions.empty:
+            prior_locks = all_transactions[
+                (all_transactions["candidate_id"] == candidate_id) &
+                (all_transactions["enforcement_action"] == "LOCKED") &
+                (pd.to_datetime(all_transactions["timestamp"], errors="coerce") >= window_start)
+                ]
+            if len(prior_locks)>= BAN_AFTER_LOCKS - 1:
+                return "BANNED"
+        return "LOCKED"
+    return "NONE"
