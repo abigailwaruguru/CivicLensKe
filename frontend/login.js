@@ -16,7 +16,7 @@ document.getElementById('login-form').addEventListener('submit', function(e) {
     return;
   }
 
-  // Save logged in user
+  //Save logged in user
   localStorage.setItem('civiclens_loggedin', username);
   messageDiv.textContent = 'Login successful! Redirecting...';
   messageDiv.style.color = 'green';
