@@ -18,14 +18,29 @@
   </header>
   <main>
     <section>
-      <form id="signup-form" autocomplete="off">
-        <label for="signup-username">Username:</label>
-        <input id="signup-username" name="username" required>
-        <label for="signup-password">Password:</label>
-        <input id="signup-password" name="password" type="password" required>
-        <button type="submit">Sign Up</button>
+      <form id="signup-form" autocomplete="off" class="form-container">
+        <fieldset>
+          <legend>Sign Up</legend>
+          <div class="form-group">
+            <label for="signup-username">Username</label>
+            <input id="signup-username" name="username" required>
+          </div>
+          <div class="form-group">
+            <label for="signup-email">Email Address</label>
+            <input id="signup-email" name="email" type="email" required>
+          </div>
+          <div class="form-group">
+            <label for="signup-password">Password</label>
+            <input id="signup-password" name="password" type="password" required>
+          </div>
+          <div class="form-group">
+            <label for="signup-password2">Confirm Password</label>
+            <input id="signup-password2" name="password2" type="password" required>
+          </div>
+          <button type="submit">Sign Up</button>
+        </fieldset>
       </form>
-      <p>Already have an account? <a href="login.html">Login here</a>.</p>
+      <p style="margin-top:1em;">Already have an account? <a href="login.html">Login here</a>.</p>
       <div id="signup-message"></div>
     </section>
   </main>

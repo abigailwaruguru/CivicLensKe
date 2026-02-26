@@ -1,5 +1,3 @@
-// login.js: Handles user login using localStorage
-
 document.getElementById('login-form').addEventListener('submit', function(e) {
   e.preventDefault();
   const username = document.getElementById('login-username').value.trim();
@@ -7,8 +5,13 @@ document.getElementById('login-form').addEventListener('submit', function(e) {
   const messageDiv = document.getElementById('login-message');
 
   const users = JSON.parse(localStorage.getItem('civiclens_users') || '{}');
-  if (!users[username] || users[username].password !== password) {
-    messageDiv.textContent = 'Invalid username or password.';
+  if (!users[username]) {
+    messageDiv.textContent = 'Account not registered.';
+    messageDiv.style.color = 'red';
+    return;
+  }
+  if (users[username].password !== password) {
+    messageDiv.textContent = 'Incorrect password.';
     messageDiv.style.color = 'red';
     return;
   }

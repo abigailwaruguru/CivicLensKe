@@ -22,7 +22,7 @@
     <section id="form-section">
       <h2>Enter Donation</h2>
       <form id="donation-form" autocomplete="off">
-        <input name="donorId" placeholder="Donor ID" required>
+        <input name="donorId" placeholder="Donor ID" required pattern="\d{6}" maxlength="6" minlength="6" title="Donor ID must be a 6-digit number" inputmode="numeric">
         <input name="donorName" placeholder="Donor Name" required>
         <input name="candidate" placeholder="Candidate/Party" required>
         <input name="amount" type="number" placeholder="Amount" min="1" required>
