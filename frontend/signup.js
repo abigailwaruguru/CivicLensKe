@@ -19,6 +19,20 @@ document.getElementById('signup-form').addEventListener('submit', function(e) {
     messageDiv.style.color = 'red';
     return;
   }
+  // Password strength check
+  const passwordRequirements = [
+    { regex: /.{8,}/, message: 'at least 8 characters' },
+    { regex: /[A-Z]/, message: 'an uppercase letter' },
+    { regex: /[a-z]/, message: 'a lowercase letter' },
+    { regex: /[0-9]/, message: 'a number' },
+    { regex: /[^A-Za-z0-9]/, message: 'a special character' }
+  ];
+  const failed = passwordRequirements.filter(req => !req.regex.test(password));
+  if (failed.length > 0) {
+    messageDiv.textContent = 'Password must contain ' + failed.map(f => f.message).join(', ') + '.';
+    messageDiv.style.color = 'red';
+    return;
+  }
   if (password !== password2) {
     messageDiv.textContent = 'Passwords do not match.';
     messageDiv.style.color = 'red';
