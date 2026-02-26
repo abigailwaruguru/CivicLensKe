@@ -22,10 +22,17 @@
     <section id="form-section">
       <h2>Enter Donation</h2>
       <form id="donation-form" autocomplete="off">
-        <input name="donor" placeholder="Donor Name/ID" required>
+        <input name="donorId" placeholder="Donor ID" required>
+        <input name="donorName" placeholder="Donor Name" required>
         <input name="candidate" placeholder="Candidate/Party" required>
         <input name="amount" type="number" placeholder="Amount" min="1" required>
-        <input name="paymentMethod" placeholder="Payment Method" required>
+        <select name="paymentMethod" required>
+          <option value="">Select Payment Method</option>
+          <option value="M-Pesa">M-Pesa</option>
+          <option value="Cheque">Cheque</option>
+          <option value="Cash">Cash</option>
+          <option value="Card">Card</option>
+        </select>
         <button type="submit">Submit Donation</button>
       </form>
     </section>
@@ -34,7 +41,8 @@
       <table id="transactions-table">
         <thead>
           <tr>
-            <th>Donor</th>
+            <th>Donor ID</th>
+            <th>Donor Name</th>
             <th>Candidate/Party</th>
             <th>Amount</th>
             <th>Payment Method</th>

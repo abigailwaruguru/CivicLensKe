@@ -34,7 +34,8 @@ function renderTable() {
   transactions.forEach(tx => {
     const tr = document.createElement("tr");
     tr.innerHTML = `
-      <td>${tx.donor}</td>
+      <td>${tx.donorId || ''}</td>
+      <td>${tx.donorName || ''}</td>
       <td>${tx.candidate}</td>
       <td>${tx.amount}</td>
       <td>${tx.paymentMethod}</td>
@@ -49,7 +50,8 @@ function renderTable() {
 document.getElementById("donation-form").addEventListener("submit", function(e) {
   e.preventDefault();
   const form = e.target;
-  const donor = form.donor.value.trim();
+  const donorId = form.donorId.value.trim();
+  const donorName = form.donorName.value.trim();
   const candidate = form.candidate.value.trim();
   const amount = Number(form.amount.value);
   const paymentMethod = form.paymentMethod.value.trim();
@@ -60,7 +62,7 @@ document.getElementById("donation-form").addEventListener("submit", function(e) 
   const transactions = getTransactions();
   const newTx = {
     id: transactions.length + 1,
-    donor, candidate, amount, paymentMethod, timestamp, status, reason
+    donorId, donorName, candidate, amount, paymentMethod, timestamp, status, reason
   };
   transactions.unshift(newTx);
   saveTransactions(transactions);
@@ -72,9 +74,9 @@ function downloadReport(format) {
   const transactions = getTransactions();
   let data, filename;
   if (format === "csv") {
-    const header = "Donor,Candidate,Amount,PaymentMethod,Timestamp,Status,Reason\n";
+    const header = "Donor ID,Donor Name,Candidate,Amount,PaymentMethod,Timestamp,Status,Reason\n";
     const rows = transactions.map(tx =>
-      [tx.donor, tx.candidate, tx.amount, tx.paymentMethod, tx.timestamp, tx.status, tx.reason].join(",")
+      [tx.donorId || '', tx.donorName || '', tx.candidate, tx.amount, tx.paymentMethod, tx.timestamp, tx.status, tx.reason].join(",")
     );
     data = header + rows.join("\n");
     filename = "regulator_alert_pack.csv";
