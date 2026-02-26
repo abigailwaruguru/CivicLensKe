@@ -22,8 +22,8 @@ function saveTransactions(transactions) {
 }
 
 function getStatusAndReason(amount) {
-  if (amount > 10000) return { status: "Violation", reason: "Donation exceeds legal limit" };
-  if (amount > 5000) return { status: "Suspicious", reason: "Large amount flagged" };
+  if (amount > 1000000) return { status: "Violation", reason: "Donation exceeds 1,000,000 limit" };
+  if (amount > 500000) return { status: "Suspicious", reason: "Large amount flagged (over 500,000)" };
   return { status: "Compliant", reason: "" };
 }
 
@@ -54,8 +54,15 @@ document.getElementById("donation-form").addEventListener("submit", function(e) 
   const donorName = form.donorName.value.trim();
   const candidate = form.candidate.value.trim();
   const amount = Number(form.amount.value);
-  const paymentMethod = form.paymentMethod.value.trim();
+  const paymentMethod = form.paymentMethod.value;
   const timestamp = new Date().toISOString().replace("T", " ").slice(0, 19);
+
+  // Validate donorId is a 6-digit number
+  if (!/^\d{6}$/.test(donorId)) {
+    alert("Donor ID must be a 6-digit number.");
+    form.donorId.focus();
+    return;
+  }
 
   const { status, reason } = getStatusAndReason(amount);
 
