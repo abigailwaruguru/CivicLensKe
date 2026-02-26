@@ -1,0 +1,117 @@
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1em 2em;
+  background: #003366;
+}
+.navbar-title {
+  font-size: 1.3em;
+  font-weight: bold;
+}
+.navbar-links {
+  display: flex;
+  gap: 1.5em;
+}
+.navbar-links a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1em;
+  transition: color 0.2s;
+}
+.navbar-links a:hover {
+  color: #ffd700;
+  text-decoration: underline;
+}
+
+body {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background: #f4f8fb;
+  margin: 0;
+  padding: 0;
+}
+header, footer {
+  background: #003366;
+  color: #fff;
+  padding: 1em;
+  text-align: center;
+}
+main {
+  max-width: 900px;
+  margin: 2em auto;
+  background: #fff;
+  padding: 2em;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px #0001;
+}
+h1, h2 {
+  margin-top: 0;
+}
+form {
+  display: flex;
+  gap: 1em;
+  flex-wrap: wrap;
+  margin-bottom: 1em;
+}
+form input, form button {
+  padding: 0.5em;
+  font-size: 1em;
+}
+form button {
+  background: #003366;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+form button:hover {
+  background: #0055a5;
+}
+#alerts-panel {
+  background: #fff3cd;
+  border: 1px solid #ffeeba;
+  padding: 1em;
+  margin-bottom: 1em;
+  border-radius: 4px;
+}
+#alerts-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.status-Compliant { color: green; font-weight: bold; }
+.status-Suspicious { color: orange; font-weight: bold; }
+.status-Violation { color: red; font-weight: bold; }
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1em;
+  background: #f9f9f9;
+}
+th, td {
+  border: 1px solid #ddd;
+  padding: 0.5em;
+  text-align: left;
+}
+th {
+  background: #e9ecef;
+}
+#report-section {
+  margin-top: 2em;
+}
+#report-section button {
+  margin-right: 1em;
+}
+nav a {
+  color: #003366;
+  text-decoration: none;
+  font-weight: bold;
+  margin: 0 0.5em;
+}
+nav a:hover {
+  text-decoration: underline;
+}
+#welcome-section h3 {
+  margin-top: 0;
+}
