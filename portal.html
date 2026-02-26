@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Donation Portal - CivicLens</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <div class="navbar">
+      <div class="navbar-title">CivicLens Campaign Finance Dashboard</div>
+      <nav class="navbar-links">
+        <a href="index.html">Home</a>
+        <a href="login.html">Login</a>
+        <a href="signup.html">Sign Up</a>
+      </nav>
+      <button id="logout-btn" style="float:right;">Logout</button>
+    </div>
+  </header>
+  <main>
+    <section id="welcome-section"></section>
+    <section id="form-section">
+      <h2>Enter Donation</h2>
+      <form id="donation-form" autocomplete="off">
+        <input name="donor" placeholder="Donor Name/ID" required>
+        <input name="candidate" placeholder="Candidate/Party" required>
+        <input name="amount" type="number" placeholder="Amount" min="1" required>
+        <input name="paymentMethod" placeholder="Payment Method" required>
+        <button type="submit">Submit Donation</button>
+      </form>
+    </section>
+    <section id="dashboard-section">
+      <h2>Transactions</h2>
+      <table id="transactions-table">
+        <thead>
+          <tr>
+            <th>Donor</th>
+            <th>Candidate/Party</th>
+            <th>Amount</th>
+            <th>Payment Method</th>
+            <th>Timestamp</th>
+            <th>Status</th>
+            <th>Reason</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </section>
+    <section id="report-section">
+      <button id="download-csv">Download Regulator Alert Pack (CSV)</button>
+      <button id="download-json">Download Regulator Alert Pack (JSON)</button>
+    </section>
+  </main>
+  <footer>
+    <small>Built with CivicLens Campaign Finance Build Pack</small>
+  </footer>
+  <script src="portal.js"></script>
+</body>
+</html>

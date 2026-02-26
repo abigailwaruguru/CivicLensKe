@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Login - CivicLens</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <div class="navbar">
+      <div class="navbar-title">CivicLens Campaign Finance Dashboard</div>
+      <nav class="navbar-links">
+        <a href="index.html">Home</a>
+        <a href="login.html">Login</a>
+        <a href="signup.html">Sign Up</a>
+      </nav>
+    </div>
+  </header>
+  <main>
+    <section>
+      <form id="login-form" autocomplete="off">
+        <label for="login-username">Username:</label>
+        <input id="login-username" name="username" required>
+        <label for="login-password">Password:</label>
+        <input id="login-password" name="password" type="password" required>
+        <button type="submit">Login</button>
+      </form>
+      <p>Don't have an account? <a href="signup.html">Sign up here</a>.</p>
+      <div id="login-message"></div>
+    </section>
+  </main>
+  <footer>
+    <small>Built with CivicLens Campaign Finance Build Pack</small>
+  </footer>
+  <script src="login.js"></script>
+</body>
+</html>
