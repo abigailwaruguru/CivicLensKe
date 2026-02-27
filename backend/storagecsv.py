@@ -2,7 +2,7 @@
 import pandas as pd
 import os
 import uuid
-from datetime import datetime
+from datetime import datetime, timezone
 
 #File paths for CSV storage files
 DATA_DIR = os.path.join(os.path.dirname(__file__), "..", "data")
@@ -61,7 +61,7 @@ def append_transaction(row: dict) -> pd.DataFrame:
      df = load_transactions()
      #Fil;l Defaults
      row.setdefault("transaction_id", "TXN-" + uuid.uuid4().hex[:8].upper())
-     row.setdefault("timestamp", datetime.utcnow().isoformat())
+     row.setdefault("timestamp", datetime.now(timezone.utc).isoformat())
      row.setdefault("donor_id", "")
      row.setdefault("donor_display", "Anonymous")
      row.setdefault("donor_source_type", "unknown")
@@ -113,7 +113,7 @@ def set_candidate_state(candidate_id: str, state: str, updated_by: str = "system
         "candidate_id": candidate_id,
         "state": state,
         "updated_by": updated_by,
-        "updated_at": datetime.utcnow().isoformat(),
+        "updated_at": datetime.now(timezone.utc).isoformat(),
     }])
     df = df[df["candidate_id"] != candidate_id]
     df = pd.concat([df, new_row], ignore_index=True)
@@ -137,7 +137,7 @@ def save_compliants(df: pd.DataFrame):
 def append_compliant(row: dict) -> dict:
     df = load_compliants()
     row["compliant_id"] = "CMP-" + uuid.uuid4().hex[:8].upper()
-    row["created_at"] = datetime.utcnow().isoformat()
+    row["created_at"] = datetime.now(timezone.utc).isoformat()
     row.setdefault("status", "open")
     row.setdefault("notes", "")
     new_row = pd.DataFrame([{col: row.get(col, "") for col in COMPLIANTS_COLUMNS}])
