@@ -41,4 +41,7 @@ def generate_case_file_csv(compliant_id: str = None) -> bytes:
     df_complaints = load_compliants()
 
     if complaint_id:
-        c
+        compliant_row = df_compliants[df_compliants["compliant_id"] == compliant_id]
+        if compliant_row.empty:
+            return b"compliant_id not found"
+        linked_ids_str = complaint_row.iloc[0].get("transaction_ids", "")
