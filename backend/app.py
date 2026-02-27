@@ -29,6 +29,5 @@ def _parse_bool(val):
         return val.lower() in ("true", "yes", "1")
     return bool (val) #Else False
 
-#POST / Transactions
-@app.route("/transactions", methods=["POST"])
+#POST / Transactions@@app.route("/transactions", methods=["POST"])
 #def submit_transaction():
