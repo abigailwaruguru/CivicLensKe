@@ -1,4 +1,4 @@
-// signup.js: Handles user registration using localStorage
+//Handles user registration using localStorage
 
 document.getElementById('signup-form').addEventListener('submit', function(e) {
   e.preventDefault();
@@ -13,13 +13,13 @@ document.getElementById('signup-form').addEventListener('submit', function(e) {
     messageDiv.style.color = 'red';
     return;
   }
-  // Basic email format check
+  //Basic email format check
   if (!/^\S+@\S+\.\S+$/.test(email)) {
     messageDiv.textContent = 'Please enter a valid email address.';
     messageDiv.style.color = 'red';
     return;
   }
-  // Password strength check
+  //Password strength check
   const passwordRequirements = [
     { regex: /.{8,}/, message: 'at least 8 characters' },
     { regex: /[A-Z]/, message: 'an uppercase letter' },
@@ -39,7 +39,7 @@ document.getElementById('signup-form').addEventListener('submit', function(e) {
     return;
   }
 
-  // Check if user already exists
+  //Check if user already exists
   const users = JSON.parse(localStorage.getItem('civiclens_users') || '{}');
   if (users[username]) {
     messageDiv.textContent = 'Username already exists.';
@@ -47,7 +47,7 @@ document.getElementById('signup-form').addEventListener('submit', function(e) {
     return;
   }
 
-  // Save user
+  //Save user
   users[username] = { email, password };
   localStorage.setItem('civiclens_users', JSON.stringify(users));
   messageDiv.textContent = 'Sign up successful! You can now log in.';

@@ -1,6 +1,6 @@
-// portal.js: Donation portal for logged-in users
+//Donation portal for logged in users
 
-// Redirect to login if not logged in
+//Redirect to login if not logged in
 const username = localStorage.getItem('civiclens_loggedin');
 if (!username) {
   window.location.href = 'login.html';
@@ -13,7 +13,7 @@ document.getElementById('logout-btn').onclick = function() {
   window.location.href = 'login.html';
 };
 
-// Load transactions from localStorage
+//Load transactions from localStorage
 function getTransactions() {
   return JSON.parse(localStorage.getItem('civiclens_transactions') || '[]');
 }
@@ -57,7 +57,7 @@ document.getElementById("donation-form").addEventListener("submit", function(e) 
   const paymentMethod = form.paymentMethod.value;
   const timestamp = new Date().toISOString().replace("T", " ").slice(0, 19);
 
-  // Validate donorId is a 6-digit number
+  //Validate donorId is a 6 digit number
   if (!/^\d{6}$/.test(donorId)) {
     alert("Donor ID must be a 6-digit number.");
     form.donorId.focus();
@@ -103,5 +103,5 @@ function downloadReport(format) {
 document.getElementById("download-csv").addEventListener("click", () => downloadReport("csv"));
 document.getElementById("download-json").addEventListener("click", () => downloadReport("json"));
 
-// Initial render
+//Initial render
 renderTable();
